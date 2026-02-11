@@ -191,6 +191,8 @@ static void rdpsnd_oss_open_mixer(rdpsndOssPlugin* oss)
 	if (oss->dev_unit != -1)
 		(void)sprintf_s(mixer_name, PATH_MAX - 1, "/dev/mixer%i", oss->dev_unit);
 
+	WLog_INFO(TAG, "open: %s", mixer_name);
+
 	if ((oss->mixer_handle = open(mixer_name, O_RDWR)) < 0)
 	{
 		OSS_LOG_ERR("mixer open failed", errno);
